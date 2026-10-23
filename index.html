@@ -366,7 +366,6 @@ section { padding: 35px 0; }
     <div><h2>Our photo dump 📷</h2><p class="sub">Little moments I want to keep close.</p></div>
     <button class="btn ghost small" id="kissButton">Tap for a kiss 😘</button>
   </div>
-  <p class="hint">PHOTO TIP: Create a folder named <b>photos</b> beside this index.html. Put your pictures inside it, then edit PHOTO_GALLERY near the bottom. Example: <code>src: "photos/our-photo.jpg"</code>. Make sure the filename matches exactly.</p>
   <div class="grid gallery" id="galleryGrid"></div>
 </section>
 
@@ -475,14 +474,6 @@ Until that day comes, I'll keep choosing you. Happy monthsary, my Bebu. I love y
 </div>
 
 <script>
-// ====================================================
-// EASY CUSTOMIZATION
-// 1. Put photos in a folder named "photos" beside this file.
-// 2. Edit PHOTO_GALLERY below to use your actual filenames.
-// 3. Optional music: put "our-song.mp3" beside this file,
-//    then change MUSIC_FILE to "our-song.mp3".
-// Music never plays automatically.
-// ====================================================
 
 const PHOTO_GALLERY = [
   {src:"1st.jpg", title:"Our first date", caption:"A little shy moment, a big place in my heart."},
@@ -493,7 +484,7 @@ const PHOTO_GALLERY = [
   {src:"always.jpg", title:"Always my Bebu", caption:"The beginning of so many memories. ♡"}
 ];
 
-const MUSIC_FILE = "our-song.mp3"; // Example: "our-song.mp3"
+const MUSIC_FILE = "our-song.mp3"; 
 
 const $ = id => document.getElementById(id);
 
