@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10070e">
+<title>For My Bebu ♡</title>
+
+<style>
+:root {
+  --bg: #10070e;
+  --panel: #21121d;
+  --pink: #f4a9c4;
+  --soft: #ffdae6;
+  --muted: #c9adbb;
+  --line: #f4a9c433;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 20px; }
+body {
+  margin: 0;
+  background: radial-gradient(ellipse at top, #4a1930, transparent 45%),
+              linear-gradient(#10070e, #090609);
+  color: #fff4f8;
+  font-family: Georgia, serif;
+  line-height: 1.7;
+}
+button, a { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+.hidden { display: none !important; }
+.wrap { width: min(1050px, calc(100% - 32px)); margin: auto; }
+.eyebrow {
+  font: .72rem Arial, sans-serif;
+  letter-spacing: .18em;
+  color: var(--pink);
+  text-transform: uppercase;
+}
+h1 {
+  font-size: clamp(3rem, 9vw, 5.8rem);
+  font-weight: normal;
+  line-height: 1.05;
+  margin: 15px 0;
+}
+h1 em, h2 em { color: var(--pink); }
+h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: normal; margin: 0; }
+h3 { font-weight: normal; }
+p { overflow-wrap: anywhere; }
+.sub, .lead { color: var(--muted); }
+.lead { font-size: 1.1rem; max-width: 550px; }
+.btn {
+  display: inline-block;
+  background: var(--pink);
+  color: #29101d;
+  padding: 12px 20px;
+  border: 1px solid var(--pink);
+  border-radius: 99px;
+  font-weight: bold;
+  transition: .2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 0 25px #ff77b744; }
+.ghost { background: transparent; color: var(--soft); }
+.small { padding: 8px 13px; font-size: .9rem; }
+.topbar {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+.brand { color: var(--pink); letter-spacing: .08em; }
+nav { display: flex; flex-wrap: wrap; gap: 14px; }
+nav a { color: var(--muted); font: .8rem Arial, sans-serif; }
+nav a:hover { color: var(--pink); }
+
+.hero {
+  min-height: 470px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 30px;
+  align-items: center;
+  padding: 40px 0 60px;
+}
+.hero-art {
+  min-height: 320px;
+  border: 1px solid var(--line);
+  border-radius: 180px 180px 20px 20px;
+  background: radial-gradient(circle, #803752, #2b1422 60%, #170b13);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 25px;
+  box-shadow: 0 0 60px #ff77b711;
+}
+.bigheart {
+  font-size: 6rem;
+  color: var(--pink);
+  text-shadow: 0 0 30px #ff77b799;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 50% { transform: scale(1.08); } }
+
+section { padding: 35px 0; }
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.panel {
+  background: linear-gradient(145deg, #281522dd, #160c14ee);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px;
+}
+.grid { display: grid; gap: 15px; }
+.gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.photo-card {
+  background: #20121b;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  overflow: hidden;
+}
+.photo-card img, .placeholder {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #54233a, #21101a);
+}
+.placeholder { font-size: 3rem; color: var(--pink); }
+.caption { padding: 12px; }
+.caption h3 { margin: 0; color: var(--soft); }
+.caption p { margin: 3px 0; color: var(--muted); font-size: .9rem; }
+.hint { color: var(--muted); font: .8rem/1.6 Arial, sans-serif; }
+
+.timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.memory { border-left: 2px solid var(--pink); padding-left: 15px; }
+.memory time { color: var(--pink); font: .75rem Arial, sans-serif; }
+.memory h3 { margin: 6px 0; }
+.memory p { color: var(--muted); margin: 0; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.calhead { display: flex; justify-content: space-between; align-items: center; }
+.calhead button {
+  background: transparent; color: var(--soft);
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 12px;
+}
+.calgrid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-top: 15px; }
+.calgrid div { text-align: center; padding: 7px 1px; font: .8rem Arial, sans-serif; }
+.weekday { color: var(--muted); }
+.day { border-radius: 8px; }
+.day.special { background: var(--pink); color: #29101d; font-weight: bold; }
+.day.today { outline: 1px solid var(--soft); }
+.calnote { color: var(--muted); font-size: .9rem; }
+
+.note-card {
+  min-height: 140px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 25px;
+  background: linear-gradient(135deg, #311628, #1b1019);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  color: var(--soft);
+  font-size: 1.2rem;
+}
+.center { text-align: center; }
+.letters-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.letter-button {
+  text-align: left;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #24131f;
+  color: var(--soft);
+}
+.letter-button span { display: block; font-size: 1.5rem; }
+.letter-button small { display: block; color: var(--muted); margin-top: 5px; }
+.letter-content { margin-top: 14px; min-height: 70px; }
+.letter {
+  background: linear-gradient(135deg, #ffdae6, #e99ab6);
+  color: #351422;
+  padding: 25px;
+  border-radius: 16px;
+}
+.letter p { white-space: pre-line; }
+.letter h3 { margin-top: 0; font-size: 1.5rem; }
+.letter small { display: block; text-align: right; margin-top: 20px; }
+.countgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.countbox { text-align: center; border: 1px solid var(--line); border-radius: 12px; padding: 10px 3px; }
+.countnum { display: block; font-size: 1.7rem; color: var(--pink); }
+.countbox small { color: var(--muted); font: .7rem Arial, sans-serif; }
+
+.distance {
+  text-align: center;
+  padding: clamp(22px, 5vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: radial-gradient(ellipse at top right, #55213a, #20111c 65%);
+}
+.distance p { color: var(--muted); max-width: 750px; margin: 18px auto; }
+.quote { font-size: clamp(1.2rem, 3vw, 1.7rem); color: var(--soft) !important; }
+.footer {
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding: 28px 0 40px;
+  margin-top: 35px;
+}
+.tiny { font: .78rem Arial, sans-serif; color: var(--muted); }
+
+.gift-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: radial-gradient(ellipse at center, #4a1932, #160a12 55%, #080608);
+}
+.gift-card {
+  width: min(520px, 100%);
+  text-align: center;
+  padding: 35px 25px;
+  border: 1px solid #f4a9c466;
+  border-radius: 25px;
+  background: #130a12ef;
+  box-shadow: 0 20px 90px #0008;
+}
+.gift-card p { color: var(--muted); }
+.float-heart {
+  position: fixed;
+  pointer-events: none;
+  z-index: 60;
+  animation: floatUp 1.8s ease-out forwards;
+  color: var(--pink);
+  font-size: 25px;
+}
+@keyframes floatUp {
+  to { opacity: 0; transform: translateY(-180px) scale(1.5) rotate(25deg); }
+}
+.music-control {
+  position: fixed;
+  right: 15px;
+  bottom: 15px;
+  z-index: 10;
+  border: 1px solid var(--line);
+  background: #24131fef;
+  color: var(--soft);
+  border-radius: 99px;
+  padding: 10px 14px;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: #050307e8;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.modalbox {
+  width: min(500px, 100%);
+  background: #21121d;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 24px;
+}
+.modalbox h3 { color: var(--pink); font-size: 1.5rem; }
+.modalbox p { white-space: pre-line; }
+
+@media(max-width:760px) {
+  .topbar { align-items: flex-start; flex-direction: column; }
+  .hero { grid-template-columns: 1fr; padding: 25px 0 40px; }
+  .hero-art { min-height: 230px; border-radius: 130px 130px 18px 18px; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .photo-card img, .placeholder { height: 165px; }
+  .timeline, .two { grid-template-columns: 1fr; }
+  .letters-grid { grid-template-columns: 1fr; }
+  .countgrid { grid-template-columns: repeat(2, 1fr); }
+}
+@media(max-width:390px) {
+  .gallery { grid-template-columns: 1fr; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SURPRISE OPENING SCREEN -->
+<div class="gift-screen" id="giftScreen">
+  <div class="gift-card">
+    <div class="bigheart">♡</div>
+    <div class="eyebrow">A LITTLE WORLD MADE JUST FOR YOU</div>
+    <h1>For my <em style="color:var(--pink)">Bebu</em></h1>
+    <p>Something small, holding a whole lot of love.</p>
+    <button class="btn" id="openGift">Open your gift, love ♡</button>
+    <p class="tiny">Take your time in here. It's all for us.</p>
+  </div>
+</div>
+
+<div id="site" class="hidden">
+
+<header class="wrap topbar">
+  <div class="brand">♡ OUR LITTLE WORLD</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#story">Our Story</a>
+    <a href="#gallery">Photos</a>
+    <a href="#calendar">Our 7th</a>
+    <a href="#letters">Letters</a>
+    <a href="#loveletter">Love Letter</a>
+  </nav>
+</header>
+
+<main>
+<section class="wrap hero" id="home">
+  <div>
+    <div class="eyebrow">JUNE 7, 2026 · THE BEGINNING OF US</div>
+    <h1>To my favorite <em>person.</em></h1>
+    <p class="lead">A little corner of the internet for our memories, our monthsaries, and all the little reasons I'm glad it's you.</p>
+    <a class="btn" href="#gallery">Step into our memories ♡</a>
+  </div>
+  <div class="hero-art">
+    <div class="bigheart">♡</div>
+    <p>you + me, against the distance</p>
+    <div>Every 7th is a little reminder<br>that I get to love you.</div>
+  </div>
+</section>
+
+<section class="wrap" id="story">
+  <div class="section-head">
+    <div><h2>Our little story ♡</h2><p class="sub">One date, a thousand memories to come.</p></div>
+  </div>
+  <div class="panel timeline">
+    <article class="memory">
+      <time>JUNE 7, 2026</time>
+      <h3>The beginning of us</h3>
+      <p>The day we officially became “us.” My favorite new chapter. ♡</p>
+    </article>
+    <article class="memory">
+      <time>EVERY 7TH</time>
+      <h3>Our monthsary</h3>
+      <p>Another month of choosing each other, even when we're not in the same place.</p>
+    </article>
+    <article class="memory">
+      <time>OUR NEXT CHAPTER</time>
+      <h3>One day, closer</h3>
+      <p>More pictures, more little dates, and the day distance becomes a story we tell.</p>
+    </article>
+  </div>
+</section>
+
+<section class="wrap" id="gallery">
+  <div class="section-head">
+    <div><h2>Our photo dump 📷</h2><p class="sub">Little moments I want to keep close.</p></div>
+    <button class="btn ghost small" id="kissButton">Tap for a kiss 😘</button>
+  </div>
+  <p class="hint">PHOTO TIP: Create a folder named <b>photos</b> beside this index.html. Put your pictures inside it, then edit PHOTO_GALLERY near the bottom. Example: <code>src: "photos/our-photo.jpg"</code>. Make sure the filename matches exactly.</p>
+  <div class="grid gallery" id="galleryGrid"></div>
+</section>
+
+<section class="wrap" id="notes">
+  <div class="section-head">
+    <div><h2>A tiny reminder for you 💗</h2><p class="sub">Whenever you need a little love, tap below.</p></div>
+  </div>
+  <div class="note-card" id="noteCard">You are loved more than this little screen can ever explain. ♡</div>
+  <div class="center" style="margin-top:15px">
+    <button class="btn" id="newNote">Give me a little reminder ♡</button>
+    <div class="tiny" id="noteCount" style="margin-top:10px">a little note, just for you</div>
+  </div>
+</section>
+
+<section class="wrap" id="calendar">
+  <div class="section-head">
+    <div><h2>Our monthsary calendar ♡</h2><p class="sub">The 7th will always have a little heart.</p></div>
+  </div>
+  <div class="two">
+    <div class="panel">
+      <div class="calhead">
+        <button id="prevMonth" aria-label="Previous month">←</button>
+        <strong id="monthLabel"></strong>
+        <button id="nextMonth" aria-label="Next month">→</button>
+      </div>
+      <div class="calgrid" id="calendarGrid"></div>
+      <p class="calnote">♡ Our anniversary is June 7, 2026. Every 7th after that is our monthsary.</p>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">A NOTE FOR OUR DATE</div>
+      <h3 id="calendarTitle" style="font-size:1.6rem;color:var(--pink)">Every 7th, with you ♡</h3>
+      <p id="calendarText" class="sub">A new month, another page in our story.</p>
+      <div id="monthsTogether" style="font-size:1.8rem;color:var(--pink);margin-top:22px">♡</div>
+      <div class="tiny">months since June 7, 2026</div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="letters">
+  <div class="section-head">
+    <div><h2>Open when… 💌</h2><p class="sub">Little letters for different kinds of days.</p></div>
+  </div>
+  <div class="letters-grid">
+    <button class="letter-button" data-letter="miss"><span>🌙</span>Open when you miss me<small>A little hug from far away</small></button>
+    <button class="letter-button" data-letter="sad"><span>🫂</span>Open when you're sad<small>You don't have to be okay all the time</small></button>
+    <button class="letter-button" data-letter="happy"><span>✨</span>Open when you're happy<small>I hope I get to hear all about it</small></button>
+  </div>
+  <div class="panel letter-content" id="letterContent"><p class="sub">Choose a little envelope above, love. ♡</p></div>
+</section>
+
+<section class="wrap" id="distance">
+  <div class="distance">
+    <div class="eyebrow">UNTIL I CAN HOLD YOU</div>
+    <h2>Distance is part of our story, not the end of it.</h2>
+    <p class="quote">“No matter how far apart we are, every 7th is worth waiting for and celebrating, because loving you will always be worth the distance. Until I can hold you in my arms, I'll celebrate every little month with you, my love.”</p>
+    <p>Someday, I hope we won't have to count the days until we see each other—we'll just wake up beside each other and celebrate our love together. Until then, I'll keep choosing you, missing you, and loving you from afar. ♡</p>
+  </div>
+</section>
+
+<section class="wrap" id="loveletter">
+  <div class="section-head">
+    <div><h2>A little letter for you 💌</h2><p class="sub">From me, to my Bebu.</p></div>
+  </div>
+  <div class="two">
+    <div class="letter">
+      <h3>Hi, love. ♡</h3>
+      <p>I'm happy that our story started on June 7, 2026. I made this little world so we can keep our photos, our monthsaries, and the tiny moments that mean so much to me in one place.
+
+Even when we're far apart, you still have a place in my everyday thoughts. Every 7th is worth looking forward to, because it's another month of getting to love you.
+
+Someday, I hope we won't have to count the days until we see each other. I hope we'll wake up beside each other, celebrate our monthsaries in person, and laugh about the distance that once kept us apart.
+
+Until that day comes, I'll keep choosing you. Happy monthsary, my Bebu. I love you, love. ♡</p>
+      <small>Always yours, ♡</small>
+    </div>
+    <div class="panel">
+      <div class="eyebrow">UNTIL OUR NEXT MONTHSARY</div>
+      <h3 style="font-size:1.5rem">Counting down to the 7th ♡</h3>
+      <div class="countgrid">
+        <div class="countbox"><span class="countnum" id="cdDays">--</span><small>Days</small></div>
+        <div class="countbox"><span class="countnum" id="cdHours">--</span><small>Hours</small></div>
+        <div class="countbox"><span class="countnum" id="cdMinutes">--</span><small>Minutes</small></div>
+        <div class="countbox"><span class="countnum" id="cdSeconds">--</span><small>Seconds</small></div>
+      </div>
+      <p class="calnote" id="countdownMessage">Every month with you is worth waiting for and celebrating. ♡</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div>Made with all my love, for my Bebu ♡</div>
+  <div class="tiny">June 7, 2026 · Every 7th, a little celebration.</div>
+</footer>
+
+<button class="music-control" id="musicButton">♫ Play our little melody</button>
+<audio id="bgMusic" loop preload="none"></audio>
+</div>
+
+<div class="modal hidden" id="letterModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modalbox">
+    <h3 id="modalTitle">A little letter ♡</h3>
+    <p id="modalText"></p>
+    <button class="btn" id="closeModal">Keep this close ♡</button>
+  </div>
+</div>
+
+<script>
+// ====================================================
+// EASY CUSTOMIZATION
+// 1. Put photos in a folder named "photos" beside this file.
+// 2. Edit PHOTO_GALLERY below to use your actual filenames.
+// 3. Optional music: put "our-song.mp3" beside this file,
+//    then change MUSIC_FILE to "our-song.mp3".
+// Music never plays automatically.
+// ====================================================
+
+const PHOTO_GALLERY = [
+  {src:"photos/1st.jpg", title:"Our first date", caption:"A little shy moment, a big place in my heart."},
+  {src:"photos/fav-person.jpg", title:"My favorite person", caption:"Anywhere is better when it's with you."},
+  {src:"photos/us.jpg", title:"Just us", caption:"One of many memories to come."},
+  {src:"photos/random-day.jpg", title:"A random day", caption:"Ordinary days feel special with you."},
+  {src:"photos/first-mot.jpg", title:"Our first monthsary", caption:"More days and memories with you."},
+  {src:"photos/always.jpg", title:"Always my Bebu", caption:"The beginning of so many memories. ♡"}
+];
+
+const MUSIC_FILE = "our-song.mp3"; // Example: "our-song.mp3"
+
+const $ = id => document.getElementById(id);
+
+const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({
+  "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
+}[char]));
+
+$("openGift").addEventListener("click", () => {
+  $("giftScreen").classList.add("hidden");
+  $("site").classList.remove("hidden");
+  window.scrollTo({top:0, behavior:"smooth"});
+  popHearts(14);
+
+});
+
+function renderGallery() {
+  $("galleryGrid").innerHTML = PHOTO_GALLERY.map(photo => {
+    const picture = photo.src
+      ? `<img src="${escapeHTML(photo.src)}" alt="${escapeHTML(photo.title)}" loading="lazy">`
+      : `<div class="placeholder">♡</div>`;
+
+    return `<article class="photo-card">
+      ${picture}
+      <div class="caption">
+        <h3>${escapeHTML(photo.title)}</h3>
+        <p>${escapeHTML(photo.caption)}</p>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+const notes = [
+  "Even from far away, you're still one of the best parts of my day. ♡",
+  "You don't have to do anything special to be loved. You being you is enough.",
+  "One day closer to another hug. Until then, here's a little one through the screen. 🫂",
+  "If I could teleport anywhere right now, I'd choose wherever you are.",
+  "Every 7th reminds me that the distance is real, but so is my love for you.",
+  "I hope you speak to yourself gently today. Someone far away is cheering for you. ♡",
+  "You're my favorite notification, favorite thought, and favorite person.",
+  "Someday, no countdown—just me beside you, stealing your blanket. ♡"
+];
+
+let noteIndex = -1;
+
+$("newNote").addEventListener("click", () => {
+  let next = Math.floor(Math.random() * notes.length);
+  if (next === noteIndex) next = (next + 1) % notes.length;
+
+  noteIndex = next;
+  $("noteCard").textContent = notes[next];
+  $("noteCount").textContent = "a little reminder for you ♡";
+  popHearts(5);
+});
+
+function popHearts(amount = 5) {
+  for (let i = 0; i < amount; i++) {
+    const heart = document.createElement("span");
+    heart.className = "float-heart";
+    heart.textContent = ["♡", "♥", "✦"][Math.floor(Math.random() * 3)];
+    heart.style.left = (8 + Math.random() * 84) + "vw";
+    heart.style.top = (55 + Math.random() * 35) + "vh";
+    heart.style.fontSize = (18 + Math.random() * 20) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1900);
+  }
+}
+
+$("kissButton").addEventListener("click", () => {
+  popHearts(22);
+  $("kissButton").textContent = "Kiss delivered! 😘";
+  setTimeout(() => $("kissButton").textContent = "Tap for a kiss 😘", 1800);
+});
+
+const letters = {
+  miss: {
+    title: "Open when you miss me 🌙",
+    text: "Hi, love. I wish I could be there to hug you right now. Since I can't, imagine me holding you close for a little while. Distance can make the days feel long, but it can't erase what you mean to me. Every 7th is worth waiting for, and so is the day I finally get to see you again. I love you, Bebu. ♡"
+  },
+  sad: {
+    title: "Open when you're sad 🫂",
+    text: "Hey, my love. You don't have to pretend to be okay all the time. Take a breath, rest if you need to, and remember that one hard day doesn't define your whole life. I may be far away, but I'm still cheering for you and wishing I could make things a little lighter. Be gentle with yourself, Bebu. ♡"
+  },
+  happy: {
+    title: "Open when you're happy ✨",
+    text: "BABYYYY, I hope you let yourself enjoy every bit of this happiness! I wish I could see your smile in person and celebrate right beside you. Tell me all about it when you can, because your little wins and happy moments matter to me too. Keep shining, love. ♡"
+  }
+};
+
+document.querySelectorAll("[data-letter]").forEach(button => {
+  button.addEventListener("click", () => {
+    const letter = letters[button.dataset.letter];
+    $("modalTitle").textContent = letter.title;
+    $("modalText").textContent = letter.text;
+    $("letterModal").classList.remove("hidden");
+  });
+});
+
+$("closeModal").addEventListener("click", () => $("letterModal").classList.add("hidden"));
+
+$("letterModal").addEventListener("click", event => {
+  if (event.target === $("letterModal")) $("letterModal").classList.add("hidden");
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") $("letterModal").classList.add("hidden");
+});
+
+// MONTHSARY CALENDAR
+let calendarMonth = new Date(2026, 9, 1);
+
+function renderCalendar() {
+  const year = calendarMonth.getFullYear();
+  const month = calendarMonth.getMonth();
+  const today = new Date();
+
+  $("monthLabel").textContent = calendarMonth.toLocaleDateString("en-US", {
+    month:"long", year:"numeric"
+  });
+
+  const cells = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]
+    .map(day => `<div class="weekday">${day}</div>`);
+
+  for (let i = 0; i < new Date(year, month, 1).getDay(); i++) {
+    cells.push('<div class="day"></div>');
+  }
+
+  for (let day = 1; day <= new Date(year, month + 1, 0).getDate(); day++) {
+    const isMonthsary = day === 7 && new Date(year, month, day) >= new Date(2026, 5, 7);
+    const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+
+    cells.push(`<div class="day ${isMonthsary ? "special" : ""} ${isToday ? "today" : ""}">
+      ${day}${isMonthsary ? " ♡" : ""}
+    </div>`);
+  }
+
+  $("calendarGrid").innerHTML = cells.join("");
+
+  const months = Math.max(0, (year - 2026) * 12 + month - 5);
+  $("monthsTogether").textContent = months + (months === 1 ? " month ♡" : " months ♡");
+
+  if (year === 2026 && month === 5) {
+    $("calendarTitle").textContent = "June 7 — Our beginning ♡";
+    $("calendarText").textContent = "The day we became us. The first page of our story, and a date I'll always keep close.";
+  } else {
+    $("calendarTitle").textContent = calendarMonth.toLocaleDateString("en-US", {month:"long", year:"numeric"}) + " ♡";
+    $("calendarText").textContent = "Another month, another little chapter with you. Here's to all the memories we've made and the ones still waiting for us.";
+  }
+}
+
+$("prevMonth").addEventListener("click", () => {
+  calendarMonth.setMonth(calendarMonth.getMonth() - 1);
+  renderCalendar();
+});
+
+$("nextMonth").addEventListener("click", () => {
+  calendarMonth.setMonth(calendarMonth.getMonth() + 1);
+  renderCalendar();
+});
+
+// COUNTDOWN TO THE NEXT 7TH
+function nextMonthsary(now) {
+  const beginning = new Date(2026, 5, 7);
+
+  if (now < beginning) return beginning;
+
+  let target = new Date(now.getFullYear(), now.getMonth(), 7);
+  if (now >= target) target = new Date(now.getFullYear(), now.getMonth() + 1, 7);
+
+  return target;
+}
+
+function updateCountdown() {
+  const now = new Date();
+  const difference = Math.max(0, nextMonthsary(now) - now);
+
+  $("cdDays").textContent = Math.floor(difference / 86400000);
+  $("cdHours").textContent = Math.floor(difference % 86400000 / 3600000);
+  $("cdMinutes").textContent = Math.floor(difference % 3600000 / 60000);
+  $("cdSeconds").textContent = Math.floor(difference % 60000 / 1000);
+
+  $("countdownMessage").textContent =
+    "Every month with you is worth waiting for and celebrating. ♡";
+}
+
+// OPTIONAL MUSIC — NO AUTOPLAY
+const audio = $("bgMusic");
+
+if (MUSIC_FILE) audio.src = MUSIC_FILE;
+
+$("musicButton").addEventListener("click", async () => {
+  if (!MUSIC_FILE) {
+    alert('To add music, put a song named "our-song.mp3" beside index.html, then set MUSIC_FILE to "our-song.mp3" in the code. Music stays off until the visitor presses this button.');
+    return;
+  }
+
+  try {
+    if (audio.paused) {
+      await audio.play();
+      $("musicButton").textContent = "♫ Pause our little melody";
+    } else {
+      audio.pause();
+      $("musicButton").textContent = "♫ Play our little melody";
+    }
+  } catch {
+    alert("Music couldn't play. Check that the song file is beside index.html and the filename matches.");
+  }
+});
+
+renderGallery();
+renderCalendar();
+updateCountdown();
+setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
